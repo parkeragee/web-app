@@ -1,6 +1,8 @@
 const axios = require('axios');
 
 export function handler(event, context, callback) {
+    const {identity, user} = context.clientContext;
+    console.log('parker', identity, user);
     axios.get('https://dog.ceo/api/breeds/image/random')
         .then(resp => {
             callback(null, {
