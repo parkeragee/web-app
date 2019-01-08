@@ -23,7 +23,7 @@
     <script>
       window.netlifyIdentity.on('login', function() {
         if (window.location.pathname === '/' && window.netlifyIdentity.currentUser() !== null) {
-          window.location.href = `https://migly.co/admin`;
+          window.location.href = `/admin`;
         };
       });
       window.netlifyIdentity.on('logout', function() {
