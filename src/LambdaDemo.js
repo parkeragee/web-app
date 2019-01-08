@@ -42,7 +42,6 @@ class LambdaDemo extends Component {
         const { loading } = this.state;
         return (
             <div>
-
                 <button disabled={loading} onClick={this.handleGet}>
                     {loading ? 'Loading...' : 'Make GET request'}
                 </button>
@@ -54,7 +53,6 @@ class LambdaDemo extends Component {
                 <button disabled={loading} onClick={this.handleApi}>
                     {loading ? 'Loading...' : 'Make third-party API request'}
                 </button>
-
             </div>
         );
     }
