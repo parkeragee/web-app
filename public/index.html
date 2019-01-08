@@ -20,13 +20,41 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <title>React App</title>
+    <script>
+      window.netlifyIdentity.on('login', function() {
+        if (window.location.pathname === '/' && window.netlifyIdentity.currentUser() !== null) {
+          window.location.href = `https://migly.co/admin`;
+        };
+      });
+      window.netlifyIdentity.on('logout', function() {
+        window.location = '/';
+      });
+    </script>
+    <!-- Primary Meta Tags -->
+    <title>Jabba</title>
+    <meta name="title" content="">
+    <meta name="description" content="">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="%PUBLIC_URL%/og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:title" content="">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="%PUBLIC_URL%/og.jpg">
+
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <div data-netlify-identity-button></div>
+    <div id="identity" data-netlify-identity-button></div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -38,5 +66,11 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      if (window.location.pathname.split('/')[1] !== '' && window.location.pathname.split('/')[1] !== 'admin') {
+        var elem = document.getElementById("identity");
+        elem.parentNode.removeChild(elem);
+      }
+    </script>
   </body>
 </html>
