@@ -42,6 +42,7 @@ class LambdaDemo extends Component {
         const { loading } = this.state;
         return (
             <div>
+                <h1>Authenticated page</h1>
                 <button disabled={loading} onClick={this.handleGet}>
                     {loading ? 'Loading...' : 'Make GET request'}
                 </button>
