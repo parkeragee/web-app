@@ -39,7 +39,7 @@ class LambdaDemo extends Component {
     };
 
     render() {
-        const { loading } = this.state;
+        const { loading, msg } = this.state;
         return (
             <div>
                 <h1>Authenticated page</h1>
@@ -54,6 +54,7 @@ class LambdaDemo extends Component {
                 <button disabled={loading} onClick={this.handleApi}>
                     {loading ? 'Loading...' : 'Make third-party API request'}
                 </button>
+                {msg}
             </div>
         );
     }
