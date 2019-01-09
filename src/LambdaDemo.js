@@ -54,7 +54,9 @@ class LambdaDemo extends Component {
                 <button disabled={loading} onClick={this.handleApi}>
                     {loading ? 'Loading...' : 'Make third-party API request'}
                 </button>
-                {msg}
+                {msg !== null && msg.length > 0 &&
+                    msg.map(ms => <div>{JSON.stringify(ms)}</div>)
+                }
             </div>
         );
     }
