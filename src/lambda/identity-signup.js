@@ -11,4 +11,18 @@ exports.handler = function(event, context, callback) {
     statusCode: 200,
     body: JSON.stringify(responseBody),
   });
+        const responseBody = {
+            app_metadata: {
+                uid: userDoc._id,
+                accountId: accountsDoc._id,
+            },
+        };
+
+        callback(null, {
+            statusCode: 200,
+            body: JSON.stringify(responseBody),
+        });
+    } catch(err) {
+        callback(err);
+    }
 };
