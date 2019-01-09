@@ -35,10 +35,10 @@ exports.handler = async (event, context, callback) => {
         }
     }
 
-    const db = conn.model('Accounts').populate('accountOwner').populate('users');
+    const db = conn.model('Accounts');
 
     try {
-        const doc = await db.find();
+        const doc = await db.find().populate('accountOwner').populate('users');
 
         callback(null, {
             statusCode: 200,
