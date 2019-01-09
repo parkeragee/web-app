@@ -30,12 +30,18 @@ exports.handler = async (event, context, callback) => {
             }, {
                 timestamps: true,
             }));
+            conn.model('Users', new mongoose.Schema({
+                email: { type: String, required: true, index: { unique: true } },
+            }, {
+                timestamps: true,
+            }));
         } catch(err) {
             callback(err);
         }
     }
 
     const db = conn.model('Accounts');
+    const users = conn.model('Users');
 
     try {
         const doc = await db.find().populate('accountOwner').populate('users');
