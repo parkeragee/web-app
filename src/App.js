@@ -5,7 +5,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <h1>Jabba boilerplate</h1>
+                <img style={{maxWidth:300}} src="./dashboard.svg" alt=""/>
+                <h1>Create a new SaaS product in 3 east steps!</h1>
             </div>
         );
     }
