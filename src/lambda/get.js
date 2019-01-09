@@ -24,13 +24,18 @@ exports.handler = async (event, context, callback) => {
                 bufferMaxEntries: 0, // and MongoDB driver buffering
                 useNewUrlParser: true,
             });
-            conn.model('Test', new mongoose.Schema({ name: String }));
+            conn.model('Accounts', new mongoose.Schema({
+                accountOwner: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true, index: true },
+                users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }]
+            }, {
+                timestamps: true,
+            }));
         } catch(err) {
             callback(err);
         }
     }
 
-    const db = conn.model('Test');
+    const db = conn.model('Accounts').populate('accountOwner').populate('users');
 
     try {
         const doc = await db.find();
